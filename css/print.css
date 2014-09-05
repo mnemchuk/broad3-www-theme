@@ -1,0 +1,70 @@
+
+body {
+	background-image:none;
+   background: white;
+   color: black;
+}
+
+#main{background:none;}
+p {
+   font: 12pt times, serif;
+   color: black;
+}
+
+h1, h2, h3, h4, h5 {
+   color: black;
+}
+
+/* Do not print these sections of the page */
+#sidebar-left, #sidebar-right, #menu, #search-theme-form {
+   display: none;
+}
+
+/* Do not print parts styled like this 
+* Add other classes to prevent printing
+* Use class="noprint" for particular content that you do not want to appear on the printed version.
+*/
+.tabs, .comment_add, .comment_delete, .comment_edit, .comment_reply, .form-submit, .feed-icon, .noprint {
+  display: none;
+}
+
+#header,#footer,#mission{
+  width: 100%;
+  margin: 0;
+  border: 0;
+}
+
+#content {
+   width: auto;
+   margin: 0;
+   padding: 0;
+   border: 0;
+   float: none !important;
+   background: transparent none;
+   color: black;
+}
+
+div#content {
+   padding-top: 1px;
+   
+}
+
+a:link, a:visited {
+   background: transparent;
+   text-decoration: underline;
+   color: black;
+}
+#main-inner{background:none;}
+.breadcrumb-outer{float:none;}
+
+#header, #footer-nav-menu{display:none;}
+body.admin-expanded.admin-vertical.admin-nw, body.admin-expanded.admin-vertical.admin-sw{margin-left:0px;}
+#admin-toolbar{left:-1000px!important;position:absolute!important;float:left;display:none;}
+/* Uncomment this section if you want destination URLs to be exposed 
+* on the printed output.
+*
+#content a:link:after, #content a:visited:after {
+   content: " (" attr(href) ") ";
+   font-size: 90%;
+}
+*/

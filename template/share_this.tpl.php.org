@@ -1,0 +1,23 @@
+<?php
+$base_path = path_to_theme('broad3');
+
+?>
+<div class="share-this-container">
+    <a class="share-this-link" href="#">Share This</a>
+    <div class="share-this-outer">
+        <div class="share-this-inner">
+            <input
+                class="close-share-this"
+                type="image"
+                width="14"
+                height="14"
+                src="<?php echo url($base_path . '/img/popup-close.png') ?>"
+            />
+            <ul class="share-this-list">
+                <?php	foreach($share_this_data as $item){
+                    echo '<li><div class="share-icon '.$item['iconClass'].'"></div>'.l($item['label'], $item['href'], array('attributes' => array('target' => '_blank'))) .'</li>';	
+                }?>
+            </ul>
+        </div>
+    </div>
+</div>

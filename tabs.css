@@ -1,0 +1,30 @@
+/*
+ * Tabs CSS
+ *
+ * Adds styles for the primary and secondary tabs.
+ *
+ * Compare this with default CSS found in the system module's stylesheet (a copy
+ * of which is in drupal6-reference.css, line 510.)
+ *
+ */
+
+.tabs {
+    font-weight: bold;
+    font-size: 11px;
+}
+
+.tabs ul.primary {
+    margin: 0;
+    padding: 0;
+}
+
+.tabs ul.primary li {
+    float: left;
+    display: block;
+}
+
+.tabs ul.primary li a {
+    display: block;
+    margin: 0 0.2em 0 0;
+    padding: 0.5em;
+}

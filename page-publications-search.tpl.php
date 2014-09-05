@@ -1,0 +1,199 @@
+<?php include dirname(__FILE__) . '/header.php' ?>
+	<?php 
+	//reset search filter
+	$_SESSION['biblio_filter'] = array();
+	$_SESSION['biblio_custom_search'] = array();
+	?>
+	<?php if ($navbar): ?>
+        <div id="navbar"><div id="navbar-inner" class="clear-block region region-navbar">
+
+          <a name="navigation" id="navigation"></a>
+
+          <?php print $navbar; ?>
+
+        </div></div> <!-- /#navbar-inner, /#navbar -->
+      <?php endif; ?>
+      <div class="breadcrumb-outer">
+          <?php echo $breadcrumb ?>
+      </div>
+      <?php if ($left): ?>
+        <div id="sidebar-left"><div id="sidebar-left-inner" class="region region-left">
+          <?php print $left; ?>
+        </div></div> <!-- /#sidebar-left-inner, /#sidebar-left -->
+      <?php endif; ?>
+
+      <?php if ($right): ?>
+        <div id="sidebar-right"><div id="sidebar-right-inner" class="region region-right">
+          <?php print $right; ?>
+        </div></div> <!-- /#sidebar-right-inner, /#sidebar-right -->
+      <?php endif; ?>
+      <div id="content"><div id="content-inner">
+
+        <?php if ($mission): ?>
+          <div id="mission"><?php print $mission; ?></div>
+        <?php endif; ?>
+
+       
+
+        <?php if ($title || $tabs || $help || $messages): ?>
+          <div id="content-header" >
+           
+            <h1 class="title">Scientific Publications</h1>
+            <?php print $messages; ?>
+            <?php if ($tabs): ?>
+              <div class="tabs"><?php print $tabs; ?></div>
+            <?php endif; ?>
+            <?php print $help; ?>
+          </div> <!-- /#content-header -->
+        <?php endif; ?>
+
+        <div id="content-area">
+           <span class="publication-advance-search-intro"><?php print $content; ?></span>
+        	<div class="publication-advance-search">
+        		<h2 class="title">Search for Publications</h2>
+				<form action="/publications"  accept-charset="UTF-8" method="post" id="biblio-search-page"> 
+					<input type="hidden" name="op" value="Reset">
+					<input type="hidden" name="form_token" value="3ca64e4cdd627ca977a5ec663c8a20b5">
+					<input type="hidden" name="form_id" value="biblio_search_form">
+					<!--
+					<input type="hidden" name="form_token" id="edit-biblio-form-filter-form-token" value="3a5c394132ca06b42e2bed186a91142e"  /> 
+					<input type="hidden" name="form_id" id="edit-biblio-form-filter" value="biblio_form_filter"  /> 
+					-->					
+					<div class="form-item"> 
+					 <label for="keys">Keyword(s):</label> 
+					 <input type="text" maxlength="255" name="keys" id="keys" size="60" value="" class="form-text" /> 
+					</div> 
+					<div class="form-item form-item-rightside"> 
+					</div> 
+					<div class="form-item"> 
+					 <label for="author">Author:</label> 
+					 <input type="text" maxlength="255" name="author" id="author" size="60" value="" class="form-text" /> 
+					</div> 
+					<div class="form-item form-item-rightside"> 
+					 <label for="Title">Title:</label> 
+					 <input type="text" maxlength="255" name="title" id="title" size="60" value="" class="form-text" /> 
+					</div> 
+					<div class="form-item"> 
+					 <label for="journal">Journal:</label> 
+					 <input type="text" maxlength="255" name="journal" id="journal" size="60" value="" class="form-text" /> 
+					</div> 
+					 
+					<div class="form-item form-item-rightside"> 
+					 <label for="date">Publication Date:</label>
+			         <select name="timeframe" id="timeframe"> 
+	  <option value="">Select ***</option> 
+			           <option value="Before">Before</option> 
+			           <!--<option value="On">On</option>--!> 
+			           <option value="After">After</option> 
+			         </select> 
+			         <!--
+					  <select name="day" id="day"> 
+			
+	                           <option value="0"></option> 
+			           <option value="1">1</option> 
+			           <option value="2">2</option> 
+			           <option value="3">3</option> 
+			           <option value="4">4</option> 
+			           <option value="5">5</option> 
+			           <option value="6">6</option> 
+			           <option value="7">7</option> 
+			           <option value="8">8</option> 
+			           <option value="9">9</option> 
+			           <option value="10">10</option> 
+			           <option value="11">11</option> 
+			           <option value="12">12</option> 
+			           <option value="13">13</option> 
+			           <option value="14">14</option> 
+			           <option value="15">15</option> 
+			           <option value="16">16</option> 
+			           <option value="17">17</option> 
+			           <option value="18">18</option> 
+			           <option value="19">19</option> 
+			           <option value="20">20</option> 
+			           <option value="21">21</option> 
+			           <option value="22">22</option> 
+			           <option value="23">23</option> 
+			           <option value="24">24</option> 
+			           <option value="25">25</option> 
+			           <option value="26">26</option> 
+			           <option value="27">27</option> 
+			           <option value="28">28</option> 
+			           <option value="29">29</option> 
+			           <option value="30">30</option> 
+			           <option value="31">31</option> 
+			         </select> 
+			         -->
+			         <select name="month" id="month"> 
+			           <option value="0">Month</option> 
+			           <option value="1">January</option> 
+			           <option value="2">February</option> 
+			           <option value="3">March</option> 
+			           <option value="4">April</option> 
+			           <option value="5">May</option> 
+			           <option value="6">June</option> 
+			           <option value="7">July</option> 
+			           <option value="8">August</option> 
+			           <option value="9">September</option> 
+			           <option value="10">October</option> 
+			           <option value="11">November</option> 
+			           <option value="12">December</option> 
+			         </select> 
+			         <select name="year" id="year"> 
+			           <option value="0">Year</option>
+				   <option value="2003">2003</option> 
+			           <option value="2004">2004</option> 			           
+			           <option value="2005">2005</option> 
+			           <option value="2006">2006</option> 
+			           <option value="2007">2007</option> 
+			           <option value="2008">2008</option> 
+			           <option value="2009">2009</option> 
+			           <option value="2010">2010</option> 
+				   <option value="2011">2011</option>
+				   <option value="2012">2012</option> 
+			         </select>
+					 <br/>
+					 <em>*** To search by date, select "before" or "after" and choose a year. Refine by selecting a month.<br/><br/></em>
+					</div> 
+					 <div class="clear"><br/></div>
+					<div class="form-item"> 
+					 <label for="pubmed">PubMed ID:</label> 
+					 <input type="text" maxlength="255" name="pubmed" id="pubmed" size="60" value="" class="form-text" /> 
+					</div> 
+					<div class="form-item form-item-rightside"> 
+					 <label for="program">Program / Platform:</label> 
+					 <select name="program" id="program">
+					 	<option value=""></option>
+					 	<?php 
+					 	$terms = taxonomy_get_children(0, "10");//10 = taxonomy ID of program/platforms
+					 	if($terms){
+					 		foreach($terms as $term){?>
+							 	<option value="<?php echo $term->tid;?>"><?php echo $term->name;?></option>
+					 			<?php
+					 		}
+					 	}
+					 	?>
+					 </select>
+					</div> 
+					<input type="submit" name="op" id="edit-submit" value="Submit" class="form-submit">
+					<div class="clear"></div>
+				</form>
+			</div>
+			<div class="publications-browse-all">
+				
+				<a href="/publications/filter/clear">Browse All</a>
+				<div class="clear"></div>
+			</div>
+			<div class="publications-share-this">
+				<?php echo theme('broad3_share_this', "Scientific Publications", "/".$_REQUEST['q']) ?>
+			</div>
+        </div>
+
+        <?php if ($content_bottom): ?>
+          <div id="content-bottom" class="region region-content_bottom">
+            <?php print $content_bottom; ?>
+          </div>
+        <?php endif; ?>
+
+      </div></div>
+
+<?php include dirname(__FILE__) . '/footer.php' ?>

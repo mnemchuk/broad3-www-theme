@@ -1250,6 +1250,33 @@ body.node-type-news .comment-share {
     padding: 24px 0 0 0;
 }
 
+
+body.node-type-news p.title-subhead {
+padding-bottom:1em;
+font-style:italic;
+font-size:14px;
+}
+
+
+
+body.node-type-news span.inlinedate {
+display:inline;
+
+}
+
+body.node-type-news span.inlinedate .cities {
+font-weight:bold;
+}
+
+#content div.node-inner div.content span.inlinedate+p{                                                                                                           
+display:inline;                                                                                                                                 
+}  
+
+
+
+
+
+
 .comments-link {
     padding-right: 1em;
 }
